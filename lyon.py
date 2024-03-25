@@ -4,6 +4,8 @@ import csv
 import navigateur
 import datetime
 import time
+from config import headers_chrome
+import requests
 
 e = datetime.datetime.now()
 timeforcsv = e.strftime("%d-%m-%Y %HH%M")
@@ -38,11 +40,13 @@ def find_airbnb():
 		link = i.find_element(By.XPATH, ".//a[@href]")
 		# print(link.get_attribute("href"))
 		base_url = extract_base_url(link.get_attribute("href"))
-		print(base_url)
+		# print(base_url)
 		ligne.append(base_url)
 		airbnb_Lyon.append(link.get_attribute("href"))
 		ecrire_dans_csv_ligne(ligne)
-		return link.get_attribute("href")
+		links_in_page = []
+		links_in_page.append(link.get_attribute("href"))
+		return links_in_page
 
 
 def extract_base_url(url):
@@ -122,7 +126,16 @@ if __name__ == "__main__":
 		navigateur.driver.get(x)
 		print(f"je scrapp l'URL suivante : {x}")
 		time.sleep(4)
-		link = find_airbnb()
+		links_in_page = find_airbnb()
+
+		if links_in_page != None:
+			for link in links_in_page:
+				print(link)
+				r = requests.get(link, cookies=cookie_dict, headers=headers_chrome)
+				print(r.status_code)
+		else:
+			print("No links in page")
+
 		while next_page() != False :
 			page_suivante[0].click()
 			time.sleep(3)
