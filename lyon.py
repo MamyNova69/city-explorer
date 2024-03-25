@@ -42,6 +42,7 @@ def find_airbnb():
 		ligne.append(base_url)
 		airbnb_Lyon.append(link.get_attribute("href"))
 		ecrire_dans_csv_ligne(ligne)
+		return link.get_attribute("href")
 
 
 def extract_base_url(url):
@@ -109,12 +110,19 @@ if __name__ == "__main__":
 	time.sleep(5)
 	find_accept_cookie()
 	time.sleep(5)
+	cookies = navigateur.driver.get_cookies()
+
+	cookie_dict = {}
+	for cookie in cookies:
+		cookie_dict[cookie['name']] = cookie['value']
+	
+
 
 	for x in URLS_TO_SCRAPP:
 		navigateur.driver.get(x)
 		print(f"je scrapp l'URL suivante : {x}")
 		time.sleep(4)
-		find_airbnb()
+		link = find_airbnb()
 		while next_page() != False :
 			page_suivante[0].click()
 			time.sleep(3)
