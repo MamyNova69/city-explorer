@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/apple-favicon.png">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+
+    <title>City Explorer</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- Responsive stylesheet  -->
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+
+    <header class="main-header main-header-two">
+        <!-- Navigation Start -->
+        <div class="main-nav">
+            <nav class="navbar navbar-default navbar-fixed-top" id="navbar-main">
+                <div class="container">
+                    <div class="navbar-header page-scroll">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand page-scroll" href="#page-top"><img class="main-logo" src="images/logo/logo.png" alt=""> </a>
+                    </div>
+
+                     <!--Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                            <li> <a class="page-scroll" href="#page-top">Accueil</a> </li>
+                            <li> <a class="page-scroll" href="#about">à-propos</a> </li>
+                            <li> <a class="page-scroll" href="#datas">Données</a> </li>
+                            <li> <a class="page-scroll" href="#speakers">Les villes</a> </li>
+                            <li> <a class="page-scroll" href="#blog">Actualités</a> </li>
+                            <!--<li> <a class="page-scroll" href="#sponsors">Sponsors</a> </li>-->
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Start -->
+    <section class="main-banner main-banner-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="header-banner">
+                        <h1>City <span> explorer</span></h1>
+                        <h4>Un projet open source</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- About Start -->
+    <section class="about-area" id="about">
+        <img class="left-img" src="images/left-img.png" alt="">
+        <img class="right-img" src="images/right-img.png" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about-col">
+                        <h3>Quelques mots sur <span>City-Explorer.fr</span></h3>
+                        <p>City-explorer.fr est un projet open source basé sur l'open data. Le projet est fortement inspiré du site web <a href="http://insideairbnb.com/" target="blank">insideairbnb.com</a> </br>City Explorer est ouvert à toute collaboration, pour les dévelopeurs via la page github du projet ou simplement pour les curieux qui souhaite apprendre. Merci de noter que les informations affichées peuvent dans certaines conditions ne pas être exactes. Cela dépend en partie de la date de récupération des données.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-col">
+                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                l'open Data c'est quoi ? 
+                            </a>
+                        </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                    <div class="panel-body">
+                                        <p>L'open data est une pratique consistant à rendre des données accessibles à tous, sans restriction, afin de favoriser la transparence, l'innovation et le développement de services et d'applications utiles à la société.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingTwo">
+                                    <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Comment collaborer ? 
+                            </a>
+                        </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div class="panel-body">
+                                        <p>Vous êtes designer, photographe, développeur, rédacteur, etc. ... Le projet est loin d'être parfait, toutes les contributions sont les bienvenues. Pour les développeurs, cela se passe sur la page Github du projet <a href="https://github.com/MamyNova69/city-explorer" target="_blank">ici</a> ou en envoyant un email à trouver un email ici </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="headingFive">
+                                    <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Faire un don
+                            </a>
+                        </h4>
+                                </div>
+                                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                    <div class="panel-body">
+                                        <p>Pensser à mettre un lien vers Patreon ici</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Start -->
+    <section class="speakers-area parallax" id="speakers">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-title">
+                        <h2>Les <span>villes</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-6 fw-600">
+                    <div class="speaker-col wow fadeInLeft animated" data-wow-duration=".5s" data-wow-delay="0s">
+                        <a href="#">
+						<div class="speaker-box">
+                            <div class="pic">
+                                <img src="images/speaker/1.jpg" alt="">
+                            </div>
+                        </div>
+						</a>
+                        <div class="speaker-info">
+                            <h4>Lyon</h4>
+                            <span>dernière données du 23/03/2023</span>
+                        </div>
+                    </div>
+                </div>
+				<div class="col-md-3 col-sm-6 col-xs-6 fw-600">
+                    <div class="speaker-col wow fadeInLeft animated" data-wow-duration=".5s" data-wow-delay="0s">
+                        <div class="speaker-box">
+                            <div class="pic">
+                                <img src="images/speaker/2.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="speaker-info">
+                            <h4>Nice</h4>
+                            <span>donnée en cours d'aquisition</span>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Schedules Start -->
+    <section class="schedule-area" id="datas">
+        <img class="left-img" src="images/left-img.png" alt="">
+        <img class="right-img" src="images/right-img.png" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-title">
+                        <h2>Les <span>données</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="table-responsive schedule-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Villes</th>
+                                <th>Fichier</th>
+                                <th>date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lyon</td>
+                                <td>Lien vers csv</td>
+                                <td>23/03/2024</td>
+                            </tr>
+                            <tr class="table-row-bg">
+                                <td>Nice</td>
+                                <td>Lien vers csv</td>
+                                <td>à venir</td>                            
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section> 
+	
+	    <!-- Ticket Start -->
+    <section class="ticket-area parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-8">
+
+                </div>
+            </div>
+        </div>
+    </section> 
+
+
+    <!-- Blog Start -->
+    <section class="blog-area" id="blog">
+        <img class="left-img" src="images/left-img.png" alt="">
+        <img class="right-img" src="images/right-img.png" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-title">
+                        <h2>Les <span>actualités</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-center">
+                    <div class="col-md-4 col-sm-6 col-xs-6 fw-600">
+                        <div class="blog-col wow fadeInLeft animated" data-wow-duration=".5s" data-wow-delay="0s">
+                            <div class="blog-img">
+                                <img src="images/blog/1.jpg" alt="">
+                                <div class="blog-date">
+                                    <h3>20/03/2024</h3>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h4><a href="#">Reims</a></h4>
+                                <p>Les locations Airbnb sous surveillance</p>
+                                <a class="btn btn-default my-btn btn-color" href="https://www.lunion.fr/id582305/article/2024-03-23/reims-les-locations-airbnb-sous-surveillance" target="blank" role="button">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-6 fw-600">
+                        <div class="blog-col wow fadeInLeft animated" data-wow-duration=".5s" data-wow-delay=".2s">
+                            <div class="blog-img">
+                                <img src="images/blog/2.jpg" alt="">
+                                <div class="blog-date">
+                                    <h3>20/03/2024</h3>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h4><a href="#">New York</a></h4>
+                                <p>Il n’a jamais été aussi cher et compliqué d’y séjourner</p>
+                                <a class="btn btn-default my-btn btn-color" href="https://www.lopinion.fr/economie/depuis-que-new-york-sest-attaque-a-airbnb-il-na-jamais-ete-aussi-cher-et-complique-dy-sejourner" target="blank" role="button">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-6 fw-600">
+                        <div class="blog-col wow fadeInLeft animated" data-wow-duration=".5s" data-wow-delay=".3s">
+                            <div class="blog-img">
+                                <img src="images/blog/3.jpg" alt="">
+                                <div class="blog-date">
+                                    <h3>22/03/2024</h3>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <h4><a href="#">Eure-et-Loir</a></h4>
+                                <p>le logement « accessible » aux handicapés de Marion est récompensé par Airbnb</p>
+                                <a class="btn btn-default my-btn btn-color" href="https://www.leparisien.fr/eure-et-loir-28/eure-et-loir-le-logement-accessible-aux-handicapes-de-marion-est-recompense-par-airbnb-22-03-2024-CWXZOUBVUVBUFG6KFZZ6U2CC2A.php" target="blank" role="button">En savoir plus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Sponsors Start 
+    <section class="sponsor-area" id="sponsors">
+        <img class="left-img" src="images/left-img.png" alt="">
+        <img class="right-img" src="images/right-img.png" alt="">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="section-title">
+                        <h2>Les <span>Contributeurs</span></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/1.png" alt=""></a>
+						<center>Mamy Nova</center>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/2.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/3.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/4.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/5.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/6.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/7.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/8.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/9.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/10.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/11.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-3 col-xs-3">
+                    <div class="sponsor-col">
+                        <a href="#"><img src="images/sponsor/12.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  -->
+
+
+    <section class="footer-copy-right text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>2023 city-explorer.fr</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Style Background ten End -->    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap Min js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- jquery easing JS -->
+    <script src="js/jquery.easing.min.js"></script>
+    <!-- scrolling-nav JS -->
+    <script src="js/scrolling-nav.js"></script>
+    <!-- counterup -->
+    <script src="js/jquery.counterup.min.js"></script>
+    <!-- waypoints -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <!-- carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+    <!-- wow js -->
+    <script src="js/wow.min.js"></script>
+    <!-- countdown JS -->
+    <script src="js/countdown.js"></script>
+    <!-- jquery.plate JS -->
+    <script src="js/jquery.plate.js"></script>
+    <!-- jarallax JS -->
+    <script src="js/jarallax.min.js"></script>
+    <!-- jquery scrollUp  JS -->
+    <script src="js/jquery.scrollUp.min.js"></script>
+
+
+    <!-- Map API Key -->
+    <<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWJqEQulUkszx4CH5sRCtFBXyMo8KWyd4&callback=initMap"
+             type="text/javascript"></script>
+    <script src="js/map.js"></script>
+
+    <!-- Main Custom JS -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
