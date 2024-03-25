@@ -137,15 +137,15 @@ if __name__ == "__main__":
 	for cookie in cookies:
 		cookie_dict[cookie['name']] = cookie['value']
 		
-	url = "https://www.airbnb.fr/rooms/16695674"
+	url = "https://www.airbnb.fr/rooms/1007691117144198455"
 	r = requests.get(url, cookies=cookie_dict, headers=headers_chrome)
 	print(r.status_code)
 	soup = BeautifulSoup(r.text, 'html.parser')
 	prettified_text = soup.prettify()
 	# print(prettified_text)
-	# file_name = f"{timeforcsv}_code.txt"
-	# with open(file_name, mode='w', encoding='utf-8') as file:
-	# 	file.write(prettified_text)
+	file_name = f"{timeforcsv}_code.txt"
+	with open(file_name, mode='w', encoding='utf-8') as file:
+		file.write(prettified_text)
 	
 	# pattern = re.compile(r'"name":"(.*?)".*?"userId":"(.*?)".*?"value":"(.*?)"')
 	pattern = re.compile(r'"__typename":"PassportCardData","name":"(.*?)".*?"userId":"(.*?)"')
