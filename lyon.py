@@ -101,7 +101,7 @@ url_to_scrap = ("https://www.airbnb.fr/s/Lyon/homes?&price_min="+str(min)+"&pric
 
 # creer une liste pour chaque collones du fichier csv :
 file_name = f"{timeforcsv}_airbnb.csv"
-titres = ["URL","Nom du logement" "Latitude", "Longitude","Hôte", "User ID"]
+titres = ["URL", "Title", "Latitude", "Longitude", "Hote", "User ID"]
 ecrire_dans_csv_ligne(titres)
 # airbnb_Lyon = []
 
