@@ -5,7 +5,8 @@ import navigateur
 import datetime
 import time
 from config import headers_chrome
-import requests
+import requests, re
+from bs4 import BeautifulSoup
 
 e = datetime.datetime.now()
 timeforcsv = e.strftime("%d-%m-%Y %HH%M")
@@ -22,8 +23,7 @@ def find_accept_cookie():
 
 def next_page():
 	global page_suivante
-	page_suivante = navigateur.wait.until(EC.presence_of_all_elements_located((By.XPATH, "//a[@aria-label='Suivant']")))
-	# print(next_page[0].get_attribute("href"))
+	page_suivante = navigateur.driver.find_elements(By.XPATH, "//a[@aria-label='Suivant']")
 	if len(page_suivante) !=0 :
 		print("Page suivante")
 		return True
@@ -32,7 +32,6 @@ def next_page():
 		return False
 
 def find_airbnb():
-	# navigateur.wait.until(EC.presence_of_all_elements_located((By.XPATH, "//div[@data-testid='card-container']")))
 	airbnb = navigateur.driver.find_elements(By.XPATH, "//div[@data-testid='card-container']")
 	for i in airbnb :
 		ligne = []
@@ -43,10 +42,30 @@ def find_airbnb():
 		# print(base_url)
 		ligne.append(base_url)
 		airbnb_Lyon.append(link.get_attribute("href"))
+
+
+		if len(base_url) != 0:
+			r = requests.get(base_url, cookies=cookie_dict, headers=headers_chrome)
+			print(r.status_code)
+			# Use BeautifulSoup to prettify the response text
+			# soup = BeautifulSoup(r.text, 'html.parser')
+			# prettified_text = soup.prettify()
+			# print(prettified_text)
+
+			p_lat = re.compile(r'"lat":([-0-9.]+),')
+			p_lng = re.compile(r'"lng":([-0-9.]+),')
+			lat = p_lat.findall(r.text)[0]
+			lng = p_lng.findall(r.text)[0]
+			print(lat, lng)
+			ligne.append(lat)
+			ligne.append(lng)
+
+
+		else:
+			print("Pas de liens dans cette page")
+
 		ecrire_dans_csv_ligne(ligne)
-		links_in_page = []
-		links_in_page.append(link.get_attribute("href"))
-		return links_in_page
+		print(ligne)
 
 
 def extract_base_url(url):
@@ -62,7 +81,7 @@ url_to_scrap = ("https://www.airbnb.fr/s/Lyon/homes?&price_min="+str(min)+"&pric
 
 # creer une liste pour chaque collones du fichier csv :
 file_name = f"{timeforcsv}_airbnb.csv"
-titres = ["URL"]
+titres = ["URL", "Latitude", "Longitude"]
 ecrire_dans_csv_ligne(titres)
 airbnb_Lyon = []
 
@@ -126,20 +145,30 @@ if __name__ == "__main__":
 		navigateur.driver.get(x)
 		print(f"je scrapp l'URL suivante : {x}")
 		time.sleep(4)
-		links_in_page = find_airbnb()
+		find_airbnb()
 
-		if links_in_page != None:
-			for link in links_in_page:
-				print(link)
-				r = requests.get(link, cookies=cookie_dict, headers=headers_chrome)
-				print(r.status_code)
-		else:
-			print("No links in page")
+		# ####### First page
+		# if links_in_page != None:
+		# 	for link in links_in_page:
+		# 		print(link)
+		# 		r = requests.get(link, cookies=cookie_dict, headers=headers_chrome)
+		# 		print(r.status_code)
+		# else:
+		# 	print("No links in page")
 
+		####### All next pages
 		while next_page() != False :
 			page_suivante[0].click()
 			time.sleep(3)
 			find_airbnb()
+
+			# if links_in_page != None:
+			# 	for link in links_in_page:
+			# 		print(link)
+			# 		r = requests.get(link, cookies=cookie_dict, headers=headers_chrome)
+			# 		print(r.status_code)
+			# else:
+			# 	print("No links in page")
 
 
 	navigateur.fermer_session_chrome()
