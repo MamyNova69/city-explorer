@@ -6,7 +6,7 @@ data = pd.read_csv("datas_complete/25-03-2024 17H03_airbnb.csv", sep=";")
 
 print(data.head())
 
-most_line_of_id = data['ID'].value_counts()
+most_line_of_id = data['User ID'].value_counts()
 print(most_line_of_id)
 
 # Créer une carte centrée sur Lyon
