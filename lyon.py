@@ -47,7 +47,7 @@ def find_airbnb():
 		base_url = extract_base_url(link.get_attribute("href"))
 		ligne.append(base_url)
 		# airbnb_Lyon.append(link.get_attribute("href"))
-		
+
 		if len(base_url) != 0:
 			r = requests.get(base_url, cookies=cookie_dict, headers=headers_chrome)
 			print(r.status_code)
@@ -101,7 +101,7 @@ url_to_scrap = ("https://www.airbnb.fr/s/Lyon/homes?&price_min="+str(min)+"&pric
 
 # creer une liste pour chaque collones du fichier csv :
 file_name = f"{timeforcsv}_airbnb.csv"
-titres = ["URL","Nom du logement" "Latitude", "Longitude", "User ID"]
+titres = ["URL","Nom du logement" "Latitude", "Longitude","Hôte", "User ID"]
 ecrire_dans_csv_ligne(titres)
 # airbnb_Lyon = []
 
