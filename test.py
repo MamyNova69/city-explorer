@@ -11,9 +11,6 @@ from bs4 import BeautifulSoup
 e = datetime.datetime.now()
 timeforcsv = e.strftime("%d-%m-%Y %HH%M")
 
-# hote et user ID
-pattern = re.compile(r'"__typename":"PassportCardData","name":"(.*?)".*?"userId":"(.*?)"')
-
 def ecrire_dans_csv_ligne(nouvelle_ligne) : # liste ou string
 	with open(file_name, mode='a', newline='', encoding='utf-8') as fichier:
 		writer = csv.writer(fichier, delimiter=';')
@@ -35,8 +32,6 @@ def next_page():
 		return False
 
 def find_airbnb():
-	
-
 	airbnb = navigateur.driver.find_elements(By.XPATH, "//div[@data-testid='card-container']")
 	for i in airbnb :
 		ligne = []
@@ -64,8 +59,6 @@ def find_airbnb():
 			print(lat, lng)
 			ligne.append(lat)
 			ligne.append(lng)
-			user = re.findall(pattern, r.text)
-			ligne.append(user)
 
 
 		else:
@@ -88,7 +81,7 @@ url_to_scrap = ("https://www.airbnb.fr/s/Lyon/homes?&price_min="+str(min)+"&pric
 
 # creer une liste pour chaque collones du fichier csv :
 file_name = f"{timeforcsv}_airbnb.csv"
-titres = ["URL", "Latitude", "Longitude", "Hôte", "User ID"]
+titres = ["URL", "Latitude", "Longitude"]
 ecrire_dans_csv_ligne(titres)
 airbnb_Lyon = []
 
@@ -134,48 +127,28 @@ url_to_scrap = ("https://www.airbnb.fr/s/Lyon/homes")
 
 
 if __name__ == "__main__":
-
 	navigateur.ouvrir_session_chrome()
 	navigateur.driver.get(url_to_scrap)
 	time.sleep(5)
 	find_accept_cookie()
 	time.sleep(5)
 	cookies = navigateur.driver.get_cookies()
-
 	cookie_dict = {}
 	for cookie in cookies:
 		cookie_dict[cookie['name']] = cookie['value']
+		
+	url = "https://www.airbnb.fr/rooms/16695674"
+	r = requests.get(url, cookies=cookie_dict, headers=headers_chrome)
+	print(r.status_code)
+	soup = BeautifulSoup(r.text, 'html.parser')
+	prettified_text = soup.prettify()
+	# print(prettified_text)
+	# file_name = f"{timeforcsv}_code.txt"
+	# with open(file_name, mode='w', encoding='utf-8') as file:
+	# 	file.write(prettified_text)
 	
+	# pattern = re.compile(r'"name":"(.*?)".*?"userId":"(.*?)".*?"value":"(.*?)"')
+	pattern = re.compile(r'"__typename":"PassportCardData","name":"(.*?)".*?"userId":"(.*?)"')
+	matches = re.findall(pattern, prettified_text)
+	print(matches)
 
-
-	for x in URLS_TO_SCRAPP:
-		navigateur.driver.get(x)
-		print(f"je scrapp l'URL suivante : {x}")
-		time.sleep(4)
-		find_airbnb()
-
-		# ####### First page
-		# if links_in_page != None:
-		# 	for link in links_in_page:
-		# 		print(link)
-		# 		r = requests.get(link, cookies=cookie_dict, headers=headers_chrome)
-		# 		print(r.status_code)
-		# else:
-		# 	print("No links in page")
-
-		####### All next pages
-		while next_page() != False :
-			page_suivante[0].click()
-			time.sleep(3)
-			find_airbnb()
-
-			# if links_in_page != None:
-			# 	for link in links_in_page:
-			# 		print(link)
-			# 		r = requests.get(link, cookies=cookie_dict, headers=headers_chrome)
-			# 		print(r.status_code)
-			# else:
-			# 	print("No links in page")
-
-
-	navigateur.fermer_session_chrome()
